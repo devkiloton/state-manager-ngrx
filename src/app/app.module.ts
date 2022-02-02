@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 import { CounterDisplayComponent } from './counter/counter-display/counter-display.component';
 import { StoreModule } from '@ngrx/store';
-import { appReducer } from './store/app.state';
+import { counterReducer } from './store/app.state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { appReducer } from './store/app.state';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ app: appReducer })
+    StoreModule.forRoot({ app: counterReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
